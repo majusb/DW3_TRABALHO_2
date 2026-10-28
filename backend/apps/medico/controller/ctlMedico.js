@@ -1,4 +1,4 @@
-    const mdlLivros = require("../model/mdlMedico");
+    const mdlMedico = require("../model/mdlMedico");
 
     const GetAllMedico = (req, res) =>
     (async () => {
@@ -8,8 +8,8 @@
 
     const GetMedicoByID = (req, res) =>
     (async () => {
-        const medicoID = parseInt(req.params.medicoid);
-        let registro = await mdlMedico.GetMedicoByID(medicoID);
+        const idMedico = parseInt(req.params.medicoid);
+        let registro = await mdlMedico.GetMedicoByID(idMedico);
 
         res.json({ status: "ok", "registro": registro });
     })();
@@ -23,16 +23,16 @@
 
     const UpdateMedico = (request, res) =>
     (async () => {
-        const medicoID = parseInt(request.params.medicoid);
+        const idMedico = parseInt(request.params.medicoid);
         const medicoREG = request.body;
-        let { msg, linhasAfetadas } = await mdlMedico.UpdateMedico(medicoID, medicoREG);
+        let { msg, linhasAfetadas } = await mdlMedico.UpdateMedico(idMedico, medicoREG);
         res.json({ "status": msg, "linhasAfetadas": linhasAfetadas });
     })();
 
     const DeleteMedico = (request, res) =>
     (async () => {
-        const medicoID = parseInt(request.params.medicoid);
-        let { msg, linhasAfetadas } = await mdlMedico.DeleteMedico(medicoID);
+        const idMedico = parseInt(request.params.medicoid);
+        let { msg, linhasAfetadas } = await mdlMedico.DeleteMedico(idMedico);
         res.json({ "status": msg, "linhasAfetadas": linhasAfetadas });
     })();
 
