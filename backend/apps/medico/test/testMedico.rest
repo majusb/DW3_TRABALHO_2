@@ -1,0 +1,59 @@
+### NecessÆriopara pegarotoken
+### Post
+# @name loginAutenticado
+POST http://localhost:40000/Login HTTP/1.1
+content-type: application/json
+
+{
+    "username": "girl",
+    "password": "girl"
+}
+
+### Seta o token
+@accessToken = {{loginAutenticado.response.body.$.token}}
+
+### teste de inserção de  medico 
+POST http://localhost:40000/insertMedico HTTP/1.1
+content-type: application/json
+Authorization: Bearer {{accessToken}}
+
+{
+    "crm": "12212",
+    "nomeMedico": "Roberto Mirando",
+    "telefone": "(17)12345-6789",
+    "especialidade": "Oftalmologista",
+    "deleted": false
+}
+
+### teste de buscar todos os medicos
+GET http://localhost:40000/getAllMedicos HTTP/1.1
+content-type: application/json
+Authorization: Bearer {{accessToken}}
+
+{
+
+}
+
+### teste de buscar medico por ID
+GET http://localhost:40000/getMedicoByID/1 HTTP/1.1
+content-type: application/json
+Authorization: Bearer {{accessToken}}
+
+
+### teste de atualizar o medico
+PUT http://localhost:40000/updateMedico/1 HTTP/1.1
+content-type: application/json
+Authorization: Bearer {{accessToken}}
+
+{
+    "crm": "123456-SP",
+    "nomeMedico": "Carlos Silva Rocha Segundo",
+    "telefone": "(11)98765-4321",
+    "especialidade": "Cardiologia Infantil",
+    "deleted": false
+}
+
+### teste de atualização de medico
+DELETE http://localhost:40000/deleteMedico/1 HTTP/1.1
+content-type: application/json
+Authorization: Bearer {{accessToken}}
