@@ -3,7 +3,6 @@
     const GetAllMedico = (req, res) =>
     (async () => {
         let registro = await mdlMedico.GetAllMedico();
-        //@ Livros não tem campo de data, então não precisa converter nada.
         res.json({ status: "ok", "registro": registro });
     })();
 
@@ -30,7 +29,6 @@
         res.json({ "status": msg, "linhasAfetadas": linhasAfetadas });
     })();
 
-    //-- DELETE /deleteMedico/:medicoid
     const DeleteMedico = (request, res) =>
     (async () => {
         const medicoID = parseInt(request.params.medicoid);
