@@ -1,0 +1,55 @@
+### Necessário para pegar o token
+# @name loginAutenticado
+POST http://localhost:40000/Login HTTP/1.1
+content-type: application/json
+
+{
+    "username": "girl",
+    "password": "girl"
+}
+
+### Seta o token
+@accessToken = {{loginAutenticado.response.body.$.token}}
+
+### teste de inserção de consulta (liga paciente 1 e medico 1)
+POST http://localhost:40000/insertConsulta HTTP/1.1
+content-type: application/json
+Authorization: Bearer {{accessToken}}
+
+{
+    "idPaciente": 1,
+    "idMedico": 1,
+    "data_hora": "2026-07-10 11:00:00",
+    "valor": 220.00,
+    "status": true,
+    "deleted": false
+}
+
+### teste de buscar todas as consultas
+GET http://localhost:40000/getAllConsulta HTTP/1.1
+content-type: application/json
+Authorization: Bearer {{accessToken}}
+
+### teste de buscar consulta por ID
+GET http://localhost:40000/getConsultaByID/1 HTTP/1.1
+content-type: application/json
+Authorization: Bearer {{accessToken}}
+
+### teste de atualizar a consulta
+PUT http://localhost:40000/updateConsulta/1 HTTP/1.1
+content-type: application/json
+Authorization: Bearer {{accessToken}}
+
+{
+    "idPaciente": 1,
+    "idMedico": 2,
+    "data_hora": "2026-07-10 15:30:00",
+    "valor": 275.50,
+    "status": false,
+    "deleted": false
+}
+
+### teste de soft delete da consulta
+DELETE http://localhost:40000/deleteConsulta/1 HTTP/1.1
+content-type: application/json
+Authorization: Bearer {{accessToken}}

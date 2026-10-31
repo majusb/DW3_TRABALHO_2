@@ -1,0 +1,40 @@
+{% extends "layout.njk" %}
+
+{% block content %}
+  <div id="consultaListagem" data-servidor-dw3="{{ servidorTrabalho }}">
+    <header class="d-flex flex-wrap justify-content-between align-items-center mb-4 gap-2">
+      <div>
+        <p class="page-kicker text-primary fw-semibold mb-1">Agenda</p>
+        <h1 class="h3 fw-bold mb-0">Consultas</h1>
+      </div>
+      <a class="btn btn-primary" href="/consulta/form?oper=Cr">
+        <i class="bi bi-plus-lg me-1"></i>Nova consulta
+      </a>
+    </header>
+
+    <div id="consultaAlert" class="alert d-none" role="alert"></div>
+
+    <div class="card border-0 shadow-sm">
+      <div class="card-body">
+        <table id="tblConsulta" class="table table-striped table-hover align-middle w-100">
+          <thead>
+            <tr>
+              <th>ID</th>
+              <th>Paciente</th>
+              <th>Médico</th>
+              <th>Data/Hora</th>
+              <th>Valor</th>
+              <th>Status</th>
+              <th class="text-end">Ações</th>
+            </tr>
+          </thead>
+          <tbody></tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+{% endblock %}
+
+{% block scripts %}
+  <script src="/apps/consulta/vwLstConsulta.js"></script>
+{% endblock %}

@@ -1,0 +1,29 @@
+/* style.css - ajustes simples por cima do Bootstrap */
+
+body.app-shell {
+  min-height: 100vh;
+  background-color: #f4f6f9;
+}
+
+.min-vh-75 {
+  min-height: 75vh;
+}
+
+.app-navbar .nav-link.active {
+  font-weight: 600;
+}
+
+.login-card,
+.page-card {
+  border-radius: 16px;
+}
+
+.page-kicker {
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  font-size: 0.8rem;
+}
+
+.table-actions .btn {
+  padding: 0.2rem 0.5rem;
+}

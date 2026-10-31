@@ -53,9 +53,9 @@ function inicializarTabelaPaciente(paciente) {
     new DataTable('#tblPaciente', {
         data: paciente,
         columns: [
-            { data: 'idPaciente', defaultContent: '' },
+            { data: 'idpaciente', defaultContent: '' },
             { data: 'cpf', defaultContent: '' },
-            { data: 'nomePaciente', defaultContent: '' },
+            { data: 'nomepaciente', defaultContent: '' },
             { data: 'telefone', defaultContent: '' },
             { data: 'data_nascimento', defaultContent: '' },
             { data: 'sexo', defaultContent: '' },
@@ -68,13 +68,13 @@ function inicializarTabelaPaciente(paciente) {
                         return '';
                     }
 
-                    var idPaciente = escaparHtml(row.idPaciente || '');
+                    var idPaciente = escaparHtml(row.idpaciente || '');
 
                     return [
                         '<div class="btn-group btn-group-sm" role="group" aria-label="Operacoes do Paciente">',
-                        '<button class="btn btn-outline-primary" type="button" data-action="visualizar" data-idPaciente="' + idPaciente + '" title="Visualizar" aria-label="Visualizar"><i class="bi bi-eye"></i></button>',
-                        '<button class="btn btn-outline-secondary" type="button" data-action="atualizar" data-idPaciente="' + idPaciente + '" title="Atualizar" aria-label="Atualizar"><i class="bi bi-pencil-square"></i></button>',
-                        '<button class="btn btn-outline-danger" type="button" data-action="remover" data-idPaciente="' + idPaciente + '" title="Remover" aria-label="Remover"><i class="bi bi-trash"></i></button>',
+                        '<button class="btn btn-outline-primary" type="button" data-action="visualizar" data-id-paciente="' + idPaciente + '" title="Visualizar" aria-label="Visualizar"><i class="bi bi-eye"></i></button>',
+                        '<button class="btn btn-outline-secondary" type="button" data-action="atualizar" data-id-paciente="' + idPaciente + '" title="Atualizar" aria-label="Atualizar"><i class="bi bi-pencil-square"></i></button>',
+                        '<button class="btn btn-outline-danger" type="button" data-action="remover" data-id-paciente="' + idPaciente + '" title="Remover" aria-label="Remover"><i class="bi bi-trash"></i></button>',
                         '</div>'
                     ].join('');
                 }
@@ -108,7 +108,7 @@ function configurarOperacoesPaciente(alertBox) {
     }
 
     tabela.addEventListener('click', function(event) {
-        var botao = event.target.closest('button[data-action][data-idPaciente]');
+        var botao = event.target.closest('button[data-action][data-id-paciente]');
 
         if (!botao) {
             return;

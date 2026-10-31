@@ -1,6 +1,6 @@
     const express = require('express');
     const bodyParser = require('body-parser');
-    require('dotenv').config();
+    require('dotenv').config({ path: require('path').join(__dirname, 'backend.env') });
     const router = require('./routes/router');
     const app = express(); const port = 40000;
 

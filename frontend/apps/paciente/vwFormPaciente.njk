@@ -1,0 +1,65 @@
+{% extends "layout.njk" %}
+
+{% block content %}
+  <header class="d-flex flex-wrap justify-content-between align-items-center mb-4 gap-2">
+    <div>
+      <p class="page-kicker text-primary fw-semibold mb-1">Cadastro</p>
+      <h1 class="h3 fw-bold mb-0">Paciente</h1>
+    </div>
+    <a class="btn btn-outline-secondary" href="/paciente">
+      <i class="bi bi-arrow-left me-1"></i>Voltar
+    </a>
+  </header>
+
+  <div class="card border-0 shadow-sm">
+    <div class="card-body p-4">
+      <form id="frmPaciente" data-servidor-dw3="{{ servidorTrabalho }}">
+        <input type="hidden" id="idPaciente" name="idPaciente">
+        <input type="hidden" id="deleted" name="deleted" value="false">
+
+        <div class="row g-3">
+          <div class="col-md-4">
+            <label for="cpf" class="form-label">CPF</label>
+            <input type="text" class="form-control" id="cpf" name="cpf" maxlength="14" required>
+          </div>
+          <div class="col-md-8">
+            <label for="nomePaciente" class="form-label">Nome</label>
+            <input type="text" class="form-control" id="nomePaciente" name="nomePaciente" maxlength="100" required>
+          </div>
+          <div class="col-md-5">
+            <label for="telefone" class="form-label">Telefone</label>
+            <input type="text" class="form-control" id="telefone" name="telefone" maxlength="20">
+          </div>
+          <div class="col-md-4">
+            <label for="dataNascimento" class="form-label">Data de nascimento</label>
+            <input type="date" class="form-control" id="dataNascimento" name="dataNascimento">
+          </div>
+          <div class="col-md-3">
+            <label for="sexo" class="form-label">Sexo</label>
+            <select class="form-select" id="sexo" name="sexo">
+              <option value="">--</option>
+              <option value="M">M</option>
+              <option value="F">F</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="d-flex gap-2 mt-4">
+          <button type="button" id="btnInserirPaciente" class="btn btn-primary d-none">
+            <i class="bi bi-check-lg me-1"></i>Inserir
+          </button>
+          <button type="button" id="btnAtualizarPaciente" class="btn btn-warning d-none">
+            <i class="bi bi-pencil-square me-1"></i>Atualizar
+          </button>
+          <button type="button" id="btnRemoverPaciente" class="btn btn-danger d-none">
+            <i class="bi bi-trash me-1"></i>Remover
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+{% endblock %}
+
+{% block scripts %}
+  <script src="/apps/paciente/vwFormPaciente.js"></script>
+{% endblock %}

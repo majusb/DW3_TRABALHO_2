@@ -1,0 +1,40 @@
+<!-- views/home.njk - painel que aparece depois do login -->
+{% extends "layout.njk" %}
+
+{% block content %}
+  <header class="page-header mb-4">
+    <p class="page-kicker text-primary fw-semibold mb-2">Sistema administrativo</p>
+    <h1 class="display-6 fw-bold mb-2">Painel principal</h1>
+    <p class="text-secondary mb-0">Use a navegação superior para acessar pacientes, médicos ou consultas.</p>
+  </header>
+
+  <div class="row g-4">
+    <div class="col-md-4">
+      <div class="card border-0 shadow-sm h-100">
+        <div class="card-body p-4">
+          <h2 class="h5 fw-semibold mb-2"><i class="bi bi-person-vcard me-2"></i>Pacientes</h2>
+          <p class="text-secondary">Cadastro e consulta dos pacientes da clínica.</p>
+          <a class="btn btn-primary" href="/paciente">Abrir</a>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-4">
+      <div class="card border-0 shadow-sm h-100">
+        <div class="card-body p-4">
+          <h2 class="h5 fw-semibold mb-2"><i class="bi bi-clipboard2-pulse me-2"></i>Médicos</h2>
+          <p class="text-secondary">Cadastro e consulta do corpo clínico.</p>
+          <a class="btn btn-primary" href="/medico">Abrir</a>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-4">
+      <div class="card border-0 shadow-sm h-100">
+        <div class="card-body p-4">
+          <h2 class="h5 fw-semibold mb-2"><i class="bi bi-calendar2-check me-2"></i>Consultas</h2>
+          <p class="text-secondary">Agendamento ligando paciente e médico.</p>
+          <a class="btn btn-primary" href="/consulta">Abrir</a>
+        </div>
+      </div>
+    </div>
+  </div>
+{% endblock %}

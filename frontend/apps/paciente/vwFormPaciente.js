@@ -157,9 +157,9 @@ async function vwGetPacienteByID() {
             throw new Error('Paciente não encontrado.');
         }
 
-        document.getElementById('idPaciente').value = paciente.idPaciente;
-        document.getElementById('nomePaciente').value = paciente.nomePaciente ?? '';
-        document.getElementById('dataNascimento').value = paciente.dataNascimento ?? '';
+        document.getElementById('idPaciente').value = paciente.idpaciente;
+        document.getElementById('nomePaciente').value = paciente.nomepaciente ?? '';
+        document.getElementById('dataNascimento').value = (paciente.data_nascimento ?? '').substring(0, 10);
         document.getElementById('sexo').value = paciente.sexo ?? '';
         document.getElementById('telefone').value = paciente.telefone ?? '';
         document.getElementById('deleted').value = String(paciente.deleted === true);

@@ -37,6 +37,7 @@ CREATE TABLE IF NOT EXISTS consultas (
     idPaciente BIGINT,
     idMedico BIGINT,
     data_hora TIMESTAMP,
+    valor NUMERIC(8,2),
     status BOOLEAN,
     deleted BOOLEAN DEFAULT false,
     CONSTRAINT pk_idConsulta PRIMARY KEY (idConsulta),
@@ -44,10 +45,10 @@ CREATE TABLE IF NOT EXISTS consultas (
     CONSTRAINT fk_idMedico FOREIGN KEY (idMedico) REFERENCES medico(idMedico)
 );
 
-INSERT INTO consultas (idPaciente, idMedico, data_hora, status) VALUES
-(1, 1, '2026-06-01 10:30:00', true),
-(2, 2, '2026-06-02 14:00:00', true),
-(3, 1, '2026-06-03 09:15:00', false);
+INSERT INTO consultas (idPaciente, idMedico, data_hora, valor, status) VALUES
+(1, 1, '2026-06-01 10:30:00', 250.00, true),
+(2, 2, '2026-06-02 14:00:00', 180.50, true),
+(3, 1, '2026-06-03 09:15:00', 300.00, false);
 
 CREATE TABLE IF NOT EXISTS usuarios (
     usuarioId BIGSERIAL,

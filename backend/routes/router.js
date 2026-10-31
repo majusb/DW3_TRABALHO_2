@@ -4,6 +4,7 @@ const routerApp = express.Router();
 //importa controllers
 const appPaciente = require("../apps/paciente/controller/ctlPaciente");
 const appMedico = require("../apps/medico/controller/ctlMedico");
+const appConsulta = require("../apps/consulta/controller/ctlConsulta");
 const appLogin = require("../apps/login/controller/ctlLogin");
 
     routerApp.use((req, res, next) => {
@@ -29,6 +30,11 @@ const appLogin = require("../apps/login/controller/ctlLogin");
     routerApp.delete("/deleteMedico/:medicoid", appLogin.AutenticaJWT, appMedico.DeleteMedico); 
 
     //@ Rotas de Consulta
+    routerApp.get("/getAllConsulta", appConsulta.GetAllConsulta);
+    routerApp.get("/getConsultaByID/:consultaid", appLogin.AutenticaJWT, appConsulta.GetConsultaByID);
+    routerApp.post("/insertConsulta", appLogin.AutenticaJWT, appConsulta.InsertConsulta);
+    routerApp.put("/updateConsulta/:consultaid", appLogin.AutenticaJWT, appConsulta.UpdateConsulta);
+    routerApp.delete("/deleteConsulta/:consultaid", appLogin.AutenticaJWT, appConsulta.DeleteConsulta);
 
     // Rota Login
     routerApp.post("/Login", appLogin.Login);

@@ -1,0 +1,30 @@
+### teste de login (usuário criado pelo clinicaDatabase.sql: girl/girl)
+POST http://localhost:40000/Login HTTP/1.1
+content-type: application/json
+
+{
+    "username": "girl",
+    "password": "girl"
+}
+
+### teste de login com senha errada (deve responder 403 "Login inválido!")
+POST http://localhost:40000/Login HTTP/1.1
+content-type: application/json
+
+{
+    "username": "girl",
+    "password": "errada"
+}
+
+### teste de login com usuário inexistente (deve responder 403 "Usuário não identificado!")
+POST http://localhost:40000/Login HTTP/1.1
+content-type: application/json
+
+{
+    "username": "naoexiste",
+    "password": "123"
+}
+
+### logout
+POST http://localhost:40000/Logout HTTP/1.1
+content-type: application/json

@@ -50,3 +50,9 @@
         botao.classList.add('d-none');
     }
     }
+
+    // Apelidos com prefixo dw3 usados pelas telas (mesmo comportamento das funções acima)
+    function dw3IsLogged() { return IsLogged(); }
+    function dw3ClearIsLoggedCookie() { return clearIsLoggedCookie(); }
+    function dw3MontarHeadersAutenticacao(headers) { return montarHeadersAutenticacao(headers); }
+    function dw3OcultarBotao(id) { return ocultarBotao(id); }

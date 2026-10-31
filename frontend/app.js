@@ -9,6 +9,7 @@
     var homeRouter = require('./routes/rtHome');
     var medicoRouter = require('./routes/rtMedico');
     var pacienteRouter = require('./routes/rtPaciente');
+    var consultaRouter = require('./routes/rtConsulta');
 
     // Configura o carregamento de variáveis de ambiente a partir do arquivo 'dw3frontend.env', permitindo que a aplicação acesse configurações sensíveis como URLs de servidores e credenciais
     require('dotenv').config({ path: path.join(__dirname, 'dw3frontend.env'), quiet: true });
@@ -42,6 +43,7 @@
     app.use('/home', homeRouter);
     app.use('/medico', medicoRouter);
     app.use('/paciente', pacienteRouter);
+    app.use('/consulta', consultaRouter);
 
 
 // Configura o tratamento de erros, incluindo a captura de erros 404 (página não encontrada) e a renderização de uma página de erro personalizada com informações sobre o erro ocorrido

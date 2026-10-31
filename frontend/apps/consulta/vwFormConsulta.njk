@@ -1,0 +1,68 @@
+{% extends "layout.njk" %}
+
+{% block content %}
+  <header class="d-flex flex-wrap justify-content-between align-items-center mb-4 gap-2">
+    <div>
+      <p class="page-kicker text-primary fw-semibold mb-1">Agenda</p>
+      <h1 class="h3 fw-bold mb-0">Consulta</h1>
+    </div>
+    <a class="btn btn-outline-secondary" href="/consulta">
+      <i class="bi bi-arrow-left me-1"></i>Voltar
+    </a>
+  </header>
+
+  <div class="card border-0 shadow-sm">
+    <div class="card-body p-4">
+      <form id="frmConsulta" data-servidor-dw3="{{ servidorTrabalho }}">
+        <input type="hidden" id="idConsulta" name="idConsulta">
+        <input type="hidden" id="deleted" name="deleted" value="false">
+
+        <div class="row g-3">
+          <div class="col-md-6">
+            <label for="idPaciente" class="form-label">Paciente</label>
+            <select class="form-select" id="idPaciente" name="idPaciente" required>
+              <option value="">Selecione o paciente</option>
+            </select>
+          </div>
+          <div class="col-md-6">
+            <label for="idMedico" class="form-label">Médico</label>
+            <select class="form-select" id="idMedico" name="idMedico" required>
+              <option value="">Selecione o médico</option>
+            </select>
+          </div>
+          <div class="col-md-5">
+            <label for="dataHora" class="form-label">Data e hora</label>
+            <input type="datetime-local" class="form-control" id="dataHora" name="dataHora" required>
+          </div>
+          <div class="col-md-4">
+            <label for="valor" class="form-label">Valor (R$)</label>
+            <input type="number" step="0.01" min="0" class="form-control" id="valor" name="valor">
+          </div>
+          <div class="col-md-3">
+            <label for="status" class="form-label">Status</label>
+            <select class="form-select" id="status" name="status">
+              <option value="true">Agendada</option>
+              <option value="false">Cancelada</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="d-flex gap-2 mt-4">
+          <button type="button" id="btnInserirConsulta" class="btn btn-primary d-none">
+            <i class="bi bi-check-lg me-1"></i>Inserir
+          </button>
+          <button type="button" id="btnAtualizarConsulta" class="btn btn-warning d-none">
+            <i class="bi bi-pencil-square me-1"></i>Atualizar
+          </button>
+          <button type="button" id="btnRemoverConsulta" class="btn btn-danger d-none">
+            <i class="bi bi-trash me-1"></i>Remover
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+{% endblock %}
+
+{% block scripts %}
+  <script src="/apps/consulta/vwFormConsulta.js"></script>
+{% endblock %}
