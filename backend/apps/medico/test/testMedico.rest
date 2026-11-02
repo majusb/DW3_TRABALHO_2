@@ -26,7 +26,7 @@ Authorization: Bearer {{accessToken}}
 }
 
 ### teste de buscar todos os medicos
-GET http://localhost:40000/getAllMedicos HTTP/1.1
+GET http://localhost:40000/getAllMedico HTTP/1.1
 content-type: application/json
 Authorization: Bearer {{accessToken}}
 

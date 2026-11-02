@@ -158,6 +158,7 @@ async function vwGetPacienteByID() {
         }
 
         document.getElementById('idPaciente').value = paciente.idpaciente;
+        document.getElementById('cpf').value = paciente.cpf ?? '';
         document.getElementById('nomePaciente').value = paciente.nomepaciente ?? '';
         document.getElementById('dataNascimento').value = (paciente.data_nascimento ?? '').substring(0, 10);
         document.getElementById('sexo').value = paciente.sexo ?? '';

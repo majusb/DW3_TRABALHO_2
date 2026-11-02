@@ -5,6 +5,7 @@
 
         // Se o cookie IsLogged não existir, redireciona para a página de login e retorna false
     if (!isLogged) {
+        document.documentElement.style.display = 'none';
         window.location.href = '/login';
         return false;
     }
@@ -12,6 +13,13 @@
     return true;
     }
 
+// Gatilho automático para rodar a verificação de login ao carregar a página
+document.addEventListener('DOMContentLoaded', function() {
+    // Se não estivermos na página de login, verifica o cookie obrigatoriamente
+    if (!window.location.pathname.includes('/login')) {
+        IsLogged();
+    }
+});
 
     function clearIsLoggedCookie() {
     // Limpa o Cookie Islogged

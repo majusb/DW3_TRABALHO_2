@@ -53,9 +53,9 @@ function inicializarTabelaMedico(medico) {
     new DataTable('#tblMedico', {
         data: medico,
         columns: [
-            { data: 'idMedico', defaultContent: '' },
+            { data: 'idmedico', defaultContent: '' },
             { data: 'crm', defaultContent: '' },
-            { data: 'nomeMedico', defaultContent: '' },
+            { data: 'nomemedico', defaultContent: '' },
             { data: 'telefone', defaultContent: '' },
             { data: 'especialidade', defaultContent: '' },
             {
@@ -67,13 +67,13 @@ function inicializarTabelaMedico(medico) {
                         return '';
                     }
 
-                    var idMedico = escaparHtml(row.idMedico || '');
+                    var idMedico = escaparHtml(row.idmedico || '');
 
                     return [
                         '<div class="btn-group btn-group-sm" role="group" aria-label="Operacoes do Medico">',
-                        '<button class="btn btn-outline-primary" type="button" data-action="visualizar" data-idMedico="' + idMedico + '" title="Visualizar" aria-label="Visualizar"><i class="bi bi-eye"></i></button>',
-                        '<button class="btn btn-outline-secondary" type="button" data-action="atualizar" data-idMedico="' + idMedico + '" title="Atualizar" aria-label="Atualizar"><i class="bi bi-pencil-square"></i></button>',
-                        '<button class="btn btn-outline-danger" type="button" data-action="remover" data-idMedico="' + idMedico + '" title="Remover" aria-label="Remover"><i class="bi bi-trash"></i></button>',
+                        '<button class="btn btn-outline-primary" type="button" data-action="visualizar" data-id-medico="' + idMedico + '" title="Visualizar" aria-label="Visualizar"><i class="bi bi-eye"></i></button>',
+                        '<button class="btn btn-outline-secondary" type="button" data-action="atualizar" data-id-medico="' + idMedico + '" title="Atualizar" aria-label="Atualizar"><i class="bi bi-pencil-square"></i></button>',
+                        '<button class="btn btn-outline-danger" type="button" data-action="remover" data-id-medico="' + idMedico + '" title="Remover" aria-label="Remover"><i class="bi bi-trash"></i></button>',
                         '</div>'
                     ].join('');
                 }
@@ -107,7 +107,7 @@ function configurarOperacoesMedico(alertBox) {
     }
 
     tabela.addEventListener('click', function(event) {
-        var botao = event.target.closest('button[data-action][data-idMedico]');
+        var botao = event.target.closest('button[data-action][data-id-medico]');
 
         if (!botao) {
             return;

@@ -1,37 +1,37 @@
-    const db = require("../../../database/databaseconfig");
+const db = require("../../../database/databaseconfig");
 
-    const GetAllMedico = async () => {
+const GetAllMedico = async () => {
     return (
         await db.query(
-        "SELECT * FROM medico where deleted = false ORDER BY nomeMedico ASC"
+            "SELECT * FROM medico WHERE deleted = false ORDER BY nomeMedico ASC"
         )
     ).rows;
-    };
+};
 
-    const GetMedicoByID = async (medicoIDPar) => {
+const GetMedicoByID = async (medicoIDPar) => {
     return (
         await db.query(
-        "SELECT * FROM medico WHERE medicoId = $1 and deleted = false ORDER BY nomeMedico ASC",
-        [medicoIDPar]
+            "SELECT * FROM medico WHERE idMedico = $1 AND deleted = false ORDER BY nomeMedico ASC",
+            [medicoIDPar]
         )
     ).rows;
-    };
+};
 
-    const InsertMedico = async (medicoREGPar) => {
+const InsertMedico = async (medicoREGPar) => {
     let linhasAfetadas;
     let msg = "ok";
     try {
         linhasAfetadas = (
-        await db.query(
-            "INSERT INTO medico " + "values(default, $1, $2, $3, $4, $5, $6)",
-            [
-            medicoREGPar.crm,
-            medicoREGPar.nomeMedico,
-            medicoREGPar.telefone,
-            medicoREGPar.especialidade,
-            medicoREGPar.deleted,
-            ]
-        )
+            await db.query(
+                "INSERT INTO medico VALUES (default, $1, $2, $3, $4, $5)",
+                [
+                    medicoREGPar.crm,
+                    medicoREGPar.nomeMedico,
+                    medicoREGPar.telefone,
+                    medicoREGPar.especialidade,
+                    medicoREGPar.deleted,
+                ]
+            )
         ).rowCount;
     } catch (error) {
         msg = "[mdlMedico|InsertMedico] " + error.detail;
@@ -39,30 +39,30 @@
     }
 
     return { msg, linhasAfetadas };
-    };
+};
 
-    const UpdateMedico = async (medicoIDPar, medicoREGPar) => {
+const UpdateMedico = async (medicoIDPar, medicoREGPar) => {
     let linhasAfetadas;
     let msg = "ok";
     try {
         linhasAfetadas = (
-        await db.query(
-            "UPDATE medico SET " +
-            "nomeMedico = $2, " +
-            "especialidade = $3, " +
-            "crm = $4, " +
-            "telefone = $5, " +
-            "deleted = $6 " +
-            "WHERE medicoId = $1",
-            [
-            medicoIDPar,
-            medicoREGPar.nomeMedico,
-            medicoREGPar.especialidade,
-            medicoREGPar.crm,
-            medicoREGPar.telefone,
-            medicoREGPar.deleted,
-            ]
-        )
+            await db.query(
+                "UPDATE medico SET " +
+                "nomeMedico = $2, " +
+                "especialidade = $3, " +
+                "crm = $4, " +
+                "telefone = $5, " +
+                "deleted = $6 " +
+                "WHERE idMedico = $1",
+                [
+                    medicoIDPar,
+                    medicoREGPar.nomeMedico,
+                    medicoREGPar.especialidade,
+                    medicoREGPar.crm,
+                    medicoREGPar.telefone,
+                    medicoREGPar.deleted,
+                ]
+            )
         ).rowCount;
     } catch (error) {
         msg = "[mdlMedico|UpdateMedico] " + error.detail;
@@ -70,18 +70,18 @@
     }
 
     return { msg, linhasAfetadas };
-    };
+};
 
-    const DeleteMedico = async (medicoIDPar) => {
+const DeleteMedico = async (medicoIDPar) => {
     let linhasAfetadas;
     let msg = "ok";
 
     try {
         linhasAfetadas = (
-        await db.query(
-            "UPDATE medico SET " + "deleted = true " + "WHERE idMedico = $1",
-            [medicoIDPar]
-        )
+            await db.query(
+                "UPDATE medico SET deleted = true WHERE idMedico = $1",
+                [medicoIDPar]
+            )
         ).rowCount;
     } catch (error) {
         msg = "[mdlMedico|DeleteMedico] " + error.detail;
@@ -89,12 +89,12 @@
     }
 
     return { msg, linhasAfetadas };
-    };
+};
 
-    module.exports = {
+module.exports = {
     GetAllMedico,
     GetMedicoByID,
     InsertMedico,
     UpdateMedico,
     DeleteMedico,
-    };
+};

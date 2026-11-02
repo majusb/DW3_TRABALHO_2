@@ -19,7 +19,6 @@ document.addEventListener('DOMContentLoaded', async function() {
         if (btnInserir) {
             btnInserir.classList.remove('d-none');
         }
-        document.getElementById('ativo').value = 'true';
     }
 
     if (oper === 'Re') {
@@ -157,11 +156,12 @@ async function vwGetMedicoByID() {
             throw new Error('Médico não encontrado.');
         }
 
-        document.getElementById('idMedico').value = medico.idMedico;
-        document.getElementById('nomeMedico').value = medico.nomeMedico ?? '';
+        // Ajustado para capturar as propriedades em minúsculas retornadas pelo Postgres, igual ao paciente
+        document.getElementById('idMedico').value = medico.idmedico;
+        document.getElementById('crm').value = medico.crm ?? '';
+        document.getElementById('nomeMedico').value = medico.nomemedico ?? '';
         document.getElementById('especialidade').value = medico.especialidade ?? '';
         document.getElementById('telefone').value = medico.telefone ?? '';
-        document.getElementById('ativo').value = String(medico.ativo);
         document.getElementById('deleted').value = String(medico.deleted === true);
 
         return true;
@@ -280,7 +280,7 @@ async function vwDeleteMedico() {
             throw new Error('Nenhum médico foi removido.');
         }
 
-        window.location.href = '/medicos';
+        window.location.href = '/medico';
     } catch (error) {
         alert(error.message || 'Erro ao remover médico.');
     } finally {

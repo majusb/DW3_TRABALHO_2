@@ -4,7 +4,7 @@
 
     //-- /medico -> a tela da tabela
     router.get('/', function(req, res) {
-    res.render('medicos/vwLstMedico', {
+    res.render('medico/vwLstMedico', {
         title: 'Médico',
         showNavbar: true,
         activeMenu: 'Medico',
@@ -14,7 +14,7 @@
 
     //-- /medico/form -> a tela de cadastro
     router.get('/form', function(req, res) {
-    res.render('medicos/vwFormMedico', {
+    res.render('medico/vwFormMedico', {
         title: 'Formulario de médicos',
         showNavbar: true,
         activeMenu: 'Medico',
