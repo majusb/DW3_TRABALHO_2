@@ -7,7 +7,7 @@ router.get('/', function(req, res) {
     res.render('login', {
         title: 'Login',
         showNavbar: false,
-        servidorTrabalho: process.env.SERVIDOR_DW3 // o front em html não tem acesso ao .env
+        servidorDw3: process.env.SERVIDOR_DW3 // o front em html não tem acesso ao .env
     });
 });
 

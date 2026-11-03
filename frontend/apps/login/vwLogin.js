@@ -13,7 +13,8 @@ document.addEventListener('DOMContentLoaded', function() {
   form.addEventListener('submit', async function(event) {
     event.preventDefault();
 
-    var servidorTrabalho = form.dataset.servidorTrabalho;
+    // Lê o atributo data-servidor-trabalho do formulário HTML
+    var servidorDw3 = form.dataset.servidorTrabalho;
     var usuario = document.getElementById('usuario').value;
     var senha = document.getElementById('senha').value;
     var submitButton = form.querySelector('button[type="submit"]');
@@ -29,15 +30,15 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
     try {
-      var response = await fetch(servidorTrabalho + '/Login', {
-        method: 'POST',
-        headers: {
-          'content-type': 'application/json'
-        },
-        body: JSON.stringify({
-          username: usuario,
-          password: senha
-        })
+      var response = await fetch(servidorDw3 + '/Login', {
+          method: 'POST',
+          headers: {
+              'content-type': 'application/json'
+          },
+          body: JSON.stringify({
+              username: usuario,
+              password: senha
+          })
       });
 
       if (!response.ok) {
